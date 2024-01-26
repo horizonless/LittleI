@@ -30,14 +30,14 @@ MonoBehaviour:
     snapshot2: 0
     snapshot3: 0
   - id: o
-    snapshot1: 0
+    snapshot1: 2
     snapshot2: 1
     snapshot3: 1
   - id: r
     snapshot1: 1
-    snapshot2: 1
+    snapshot2: 2
     snapshot3: 0
   - id: k
     snapshot1: 0
     snapshot2: 1
-    snapshot3: 0
+    snapshot3: 2
