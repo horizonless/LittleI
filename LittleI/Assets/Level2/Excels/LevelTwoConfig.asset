@@ -13,13 +13,31 @@ MonoBehaviour:
   m_Name: LevelTwoConfig
   m_EditorClassIdentifier: 
   LevelTwoConfigEntities:
-  - id: 1
-    value: 1
-  - id: 2
-    value: 0
-  - id: 3
-    value: 1
-  - id: 4
-    value: 1
-  - id: 5
-    value: 0
+  - id: a
+    snapshot1: 0
+    snapshot2: 0
+    snapshot3: 1
+  - id: l
+    snapshot1: 1
+    snapshot2: 0
+    snapshot3: 1
+  - id: l
+    snapshot1: 0
+    snapshot2: 1
+    snapshot3: 1
+  - id: w
+    snapshot1: 1
+    snapshot2: 0
+    snapshot3: 0
+  - id: o
+    snapshot1: 0
+    snapshot2: 1
+    snapshot3: 1
+  - id: r
+    snapshot1: 1
+    snapshot2: 1
+    snapshot3: 0
+  - id: k
+    snapshot1: 0
+    snapshot2: 1
+    snapshot3: 0

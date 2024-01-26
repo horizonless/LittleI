@@ -6,6 +6,8 @@ using UnityEngine;
 [Serializable]
 public class LevelTwoConfigEntity
 {
-    public int id;
-    public int value;
+    public string id;
+    public int snapshot1;
+    public int snapshot2;
+    public int snapshot3;
 }

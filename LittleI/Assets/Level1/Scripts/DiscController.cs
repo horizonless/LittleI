@@ -33,7 +33,6 @@ public class DiscController : MonoBehaviour
     public float winRadius = 12f;
 
     private float _currentSize;
-    private bool _isGrowing = false;
     private Disc _disc;
 
     private void Start()
