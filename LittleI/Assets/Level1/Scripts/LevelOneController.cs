@@ -11,6 +11,7 @@ public class LevelOneController : MonoBehaviour
 
     private async void Start()
     {
+        await UniTask.Delay(TimeSpan.FromSeconds(1), ignoreTimeScale: false);
         while (true)
         {
             foreach (var levelOneConfigEntity in _levelOneConfig.LevelOneConfigEntities)
