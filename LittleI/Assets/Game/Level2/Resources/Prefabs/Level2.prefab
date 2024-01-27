@@ -198,8 +198,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelTwoConfig: {fileID: 11400000, guid: 54baed5325dc2c04cb894b33ee6a7030, type: 2}
-  lineController: {fileID: 7485874857484372092}
   _linesTransform: {fileID: 5660707048634975930}
+  PlayerStartIndex: 102
+  PanaltyNum: 2
+  cellsGapNum: 0200000004000000070000000700000007000000
+  coinJumpTriggerNum: 2
+  PlayerCursor: {fileID: 2196316521401102588}
 --- !u!1001 &468709931737658660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -421,17 +425,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b355243619fc08241814940da6a6f83b, type: 3}
---- !u!114 &7485874857484372092 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7017200540371778904, guid: b355243619fc08241814940da6a6f83b, type: 3}
-  m_PrefabInstance: {fileID: 468709931737658660}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 771953434f9e88d43add5e6bcaa7074a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7485874857484372093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7017200540371778905, guid: b355243619fc08241814940da6a6f83b, type: 3}

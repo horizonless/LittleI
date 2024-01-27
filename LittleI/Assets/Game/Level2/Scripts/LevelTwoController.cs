@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,9 +13,18 @@ public class LevelTwoController : MonoBehaviour
     public Transform _linesTransform;
     public int PlayerStartIndex = 102;
     public int PanaltyNum = 2;
+    public List<int> cellsGapNum;
+    public int coinJumpTriggerNum = 2;
+    public PlayerCursor PlayerCursor;
+    
     private int _currentPlayerIndex;
+    private int _currentCoinIndex;
+    private int _currentGap;
     private LineCell[] _allLineCells;
     private Action _onLevelWin;
+    private LineCell _currentCoinCell;
+    private int _jumpCount = 0;
+    private bool _shouldBlockInput = false;
 
     public void Start()
     {
@@ -22,27 +32,37 @@ public class LevelTwoController : MonoBehaviour
         _currentPlayerIndex = PlayerStartIndex;
         _allLineCells = GetComponentsInChildren<LineCell>();
         Debug.Log("Count:" + _allLineCells.Length);
-        int coinPos = UnityEngine.Random.Range(0, _allLineCells.Length);
-        _allLineCells[coinPos].SetCoin(true);
-    }
-
-    public void Init(Action OnLevelWin)
-    {
-        _onLevelWin = OnLevelWin;
+        _currentCoinIndex = _currentPlayerIndex + cellsGapNum[_jumpCount];
+        _currentCoinCell = _allLineCells[_currentCoinIndex];
+        _currentCoinCell.SetCoin(true);
     }
 
     void Update()
     {
+        if(_shouldBlockInput) return;
         if (Input.GetKeyDown(KeyCode.A))
         {
-            _linesTransform.Translate(Vector3.right* 1);
+            PlayerCursor.DoShake(1f);
+            _shouldBlockInput = true;
+            _linesTransform.DOMoveX(_linesTransform.position.x + 1,1f).OnComplete(() =>
+            {
+                _shouldBlockInput = false;
+            });
+            // _linesTransform.Translate(Vector3.right* 1);
             _currentPlayerIndex -= 1;
             CheckPlayerPos(Vector3.right);
         }
         
         if (Input.GetKeyDown(KeyCode.D))
         {
-            _linesTransform.Translate(Vector3.left * 1);
+            PlayerCursor.DoShake(0.3f);
+            _shouldBlockInput = true;
+            // _linesTransform.Translate(Vector3.left * 1);
+            _linesTransform.DOMoveX(_linesTransform.position.x - 1,0.3f).OnComplete(() =>
+            {
+                
+                _shouldBlockInput = false;
+            });
             CheckPlayerPos(Vector3.left);
             _currentPlayerIndex += 1;
         }
@@ -51,19 +71,28 @@ public class LevelTwoController : MonoBehaviour
     //check if the line cell pass through is red
     public void CheckPlayerPos(Vector3 dir)
     {
-
         if (_allLineCells[_currentPlayerIndex].IsCoin)
         {
             Debug.Log("IsCoin");
-            _onLevelWin.Invoke();
+            Destroy(gameObject);
+            LevelController.StartLevel("Level3");
         }
-
         if (_allLineCells[_currentPlayerIndex].IsDanger)
         {
-            Debug.Log("IsDanger");
-            GameObject levelGO = Resources.Load<GameObject>($"Prefabs/Level2");
-            GameObject instance = Instantiate(levelGO);
             Destroy(gameObject);
+            LevelController.StartLevel("Level2");
         }
+        
+        if ((_currentCoinIndex - _currentPlayerIndex) < coinJumpTriggerNum)
+        {
+            _jumpCount += 1;
+            Debug.Log("jumpCount" + _jumpCount + " gapCount:" + cellsGapNum.Count);
+            if(_jumpCount >=  cellsGapNum.Count) return;
+            _currentCoinCell.SetCoin(false);
+            _currentCoinIndex = _currentPlayerIndex + cellsGapNum[_jumpCount];
+            _currentCoinCell = _allLineCells[_currentCoinIndex];
+            _currentCoinCell.SetCoin(true);
+        }
+        
     }
 }

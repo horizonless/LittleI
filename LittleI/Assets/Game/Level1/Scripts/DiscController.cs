@@ -80,8 +80,8 @@ public class DiscController : MonoBehaviour
         // 当圆圈大小足够覆盖屏幕时，通关
         if (_currentSize >= winRadius) // 假设屏幕大小需要的圆圈大小是10
         {
-            Debug.Log("关卡成功通关！");
-            // 这里可以添加通关后的逻辑，比如加载下一个关卡
+            LevelController.StartLevel("Level2");
+            Destroy(gameObject);
         }
     }
 }
