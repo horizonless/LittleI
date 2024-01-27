@@ -4,20 +4,18 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class LineCell : MonoBehaviour
 {
-    private SpriteRenderer _spriteRenderer;
-    public List<Sprite> spritesLooper;
     public bool IsDanger { get; private set; }
 
     async void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         while (true)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(0.1f), ignoreTimeScale: false);
-            _spriteRenderer.sprite = spritesLooper[UnityEngine.Random.Range(0, spritesLooper.Count)];
+            SetColor(UnityEngine.Random.Range(0,2));
+            await UniTask.Delay(TimeSpan.FromSeconds(5f), ignoreTimeScale: false);
         }
     }
 
@@ -33,10 +31,5 @@ public class LineCell : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.white;
             IsDanger = false;
         }
-    }
-
-    public void AddSprites(Sprite spriteVal)
-    {
-        spritesLooper.Add(spriteVal);
     }
 }
