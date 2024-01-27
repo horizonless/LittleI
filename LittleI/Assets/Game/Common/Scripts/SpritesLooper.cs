@@ -10,7 +10,8 @@ public class SpritesLooper : MonoBehaviour
     public List<Sprite> spritesLooper;
 
     public float changeRate = 0.1f;
-    // Start is called before the first frame update
+    private bool _isDestory = false;
+    
     async void Start()
     {
         if (spritesLooper.Count == 0)
@@ -25,8 +26,14 @@ public class SpritesLooper : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         while (true)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(changeRate), ignoreTimeScale: false);
+            if (_isDestory) return;
             _spriteRenderer.sprite = spritesLooper[UnityEngine.Random.Range(0, spritesLooper.Count)];
+            await UniTask.Delay(TimeSpan.FromSeconds(changeRate), ignoreTimeScale: false);
         }
+    }
+
+    private void OnDestroy()
+    {
+        _isDestory = true;
     }
 }

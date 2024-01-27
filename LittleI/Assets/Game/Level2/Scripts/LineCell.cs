@@ -8,10 +8,14 @@ using Random = System.Random;
 
 public class LineCell : MonoBehaviour
 {
+    public GameObject CoinGO;
     public bool IsDanger { get; private set; }
+    public bool IsCoin { get; private set; }
+    private bool _isDestroy = false;
 
     async void Start()
     {
+        if(string.IsNullOrWhiteSpace(gameObject.name)) return;
         while (true)
         {
             SetColor(UnityEngine.Random.Range(0,2));
@@ -21,6 +25,7 @@ public class LineCell : MonoBehaviour
 
     public void SetColor(int val)
     {
+        if (_isDestroy) return;
         if (val == 1)
         {
             GetComponent<SpriteRenderer>().color = Color.red;
@@ -31,5 +36,17 @@ public class LineCell : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.white;
             IsDanger = false;
         }
+    }
+
+    public void SetCoin(bool val)
+    {
+        IsCoin = val;
+        CoinGO.SetActive(val);
+        GetComponent<SpriteRenderer>().enabled = !val;
+    }
+
+    private void OnDestroy()
+    {
+        _isDestroy = true;
     }
 }
