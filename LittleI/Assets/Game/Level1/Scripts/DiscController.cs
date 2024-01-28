@@ -44,7 +44,7 @@ public class DiscController : MonoBehaviour
     void Update()
     {
         _currentSize -= shrinkRate * Time.deltaTime;
-        _currentSize = Mathf.Clamp(_currentSize, minRadius, 20f); // 假设最大大小是10
+        _currentSize = Mathf.Clamp(_currentSize, minRadius, 20f);
         _disc.Radius = _currentSize;
         
         if (Input.GetKeyDown(KeyCode.Space))
@@ -65,7 +65,6 @@ public class DiscController : MonoBehaviour
             
         }
 
-        // 检查通关条件
         CheckWinCondition();
     }
 
@@ -77,8 +76,7 @@ public class DiscController : MonoBehaviour
 
     void CheckWinCondition()
     {
-        // 当圆圈大小足够覆盖屏幕时，通关
-        if (_currentSize >= winRadius) // 假设屏幕大小需要的圆圈大小是10
+        if (_currentSize >= winRadius) 
         {
             LevelController.StartLevel("Level2");
             Destroy(gameObject);
