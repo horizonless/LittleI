@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensX: 400
-  sensY: 100
+  sensY: 300
   orientation: {fileID: 7684457924929133813}
 --- !u!1 &7684457924929133770
 GameObject:
