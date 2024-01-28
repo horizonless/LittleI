@@ -22,16 +22,16 @@ public class PlayerCam : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            yRotation += Time.deltaTime * sensY;
+            yRotation -= Time.deltaTime * sensY;
         }
         
         if (Input.GetKey(KeyCode.D))
         {
-            yRotation -= Time.deltaTime * sensY;
+            yRotation += Time.deltaTime * sensY;
         }
 
         xRotaion = Mathf.Clamp(xRotaion, -90f, 90f);
-        transform.rotation = Quaternion.Euler(xRotaion, yRotation, 0);
+        transform.rotation = Quaternion.Euler(0, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 }

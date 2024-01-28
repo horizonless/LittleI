@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")] public float moveSpeed;
     public Transform orientation;
+    public  float GroundDrag = 5f;
     private float horizontalInput;
     private float verticalInput;
     private Vector3 moveDirection;
@@ -27,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         MyInput();
+        SpeedControl();
+        rb.drag = GroundDrag;
     }
 
     private void MyInput()
@@ -39,5 +42,15 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+    }
+
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        if (flatVel.magnitude > moveSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
     }
 }
