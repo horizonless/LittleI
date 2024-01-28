@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MazeGenerator : MonoBehaviour
 {
-    public float shrinkRate = 2.8f;
+    public static readonly float shrinkRate = 2.8f;
     public int width = 30;
     public int height = 16;
     public GameObject wallPrefab;
@@ -31,13 +31,6 @@ public class MazeGenerator : MonoBehaviour
         GenerateMaze(0, 0);
         DrawMaze();
         IsMazeReady = true;
-    }
-    void Start()
-    {
-        maze = new bool[width, height];
-        GenerateMaze(0, 0);
-        DrawMaze();
-        IsMazeReady = true; // 设置迷宫已准备好的标志
         transform.position = CenterPos.position;
     }
 

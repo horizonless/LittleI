@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMark : MonoBehaviour
 {
-    public float shrinkRate = 2.8f;
     public float moveSpeed = 1f;
     public MazeGenerator mazeGenerator;
     public Transform SpawnPos;
@@ -67,7 +66,7 @@ public class PlayerMark : MonoBehaviour
     public void ResetPlayerPosition()
     {
         gridPosition = new Vector2Int(0, 0);
-        transform.position = new Vector3(gridPosition.x, gridPosition.y, 0);
+        transform.position = SpawnPos.position;
     }
     public Vector2Int GetCurrentGridPosition()
     {
@@ -83,7 +82,8 @@ public class PlayerMark : MonoBehaviour
         {
             // 更新位置
             gridPosition = newPosition;
-            transform.position = new Vector3(SpawnPos.position.x + gridPosition.x / shrinkRate, SpawnPos.position.y + gridPosition.y / shrinkRate, 0);
+            transform.position = new Vector3(SpawnPos.position.x + gridPosition.x / MazeGenerator.shrinkRate, SpawnPos.position.y + gridPosition.y / MazeGenerator.shrinkRate, 0);
+            mazeGenerator.SetFootprint(gridPosition); // 留下脚印
         }
         else
         {
