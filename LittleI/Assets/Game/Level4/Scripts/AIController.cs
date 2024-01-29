@@ -19,7 +19,7 @@ public class AIController : MonoBehaviour
     {
         MoveSpeed = 2;
         await UniTask.Delay(TimeSpan.FromSeconds(5), ignoreTimeScale: false);
-        MoveSpeed = 4;
+        MoveSpeed = 3;
     }
 
     void Update()

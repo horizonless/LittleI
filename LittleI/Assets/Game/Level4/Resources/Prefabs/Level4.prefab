@@ -83,7 +83,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7684457923674340599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 56.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -209,6 +209,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerGO: {fileID: 7684457923674340599}
   BloodGO: {fileID: 7903441033806806884}
+  PackManGo: {fileID: 3628012336011781550}
+  WinGo: {fileID: 8913858642059994813}
 --- !u!1 &7684457924789875291
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +549,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4161817756502661619, guid: 5e18fc0470d915846b1478fc1084cd24, type: 3}
   m_PrefabInstance: {fileID: 3674085223364234911}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3628012336011781550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 46637933269396273, guid: 5e18fc0470d915846b1478fc1084cd24, type: 3}
+  m_PrefabInstance: {fileID: 3674085223364234911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8913858642059994813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5280640156169873442, guid: 5e18fc0470d915846b1478fc1084cd24, type: 3}
+  m_PrefabInstance: {fileID: 3674085223364234911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8184223618007884362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -568,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2034111604755537197, guid: 67b65892eb8926a478f503ec7692c3f3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 56.36
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2034111604755537197, guid: 67b65892eb8926a478f503ec7692c3f3, type: 3}
       propertyPath: m_LocalRotation.w
