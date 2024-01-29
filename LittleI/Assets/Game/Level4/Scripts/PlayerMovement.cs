@@ -63,5 +63,9 @@ public class PlayerMovement : MonoBehaviour
         {
             LevelFourController.EnableBlood();
         }
+        if (other.gameObject.name == "Win")
+        {
+            LevelFourController.Win();
+        }
     }
 }

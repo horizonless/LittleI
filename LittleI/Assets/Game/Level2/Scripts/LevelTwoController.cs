@@ -26,8 +26,9 @@ public class LevelTwoController : MonoBehaviour
     private int _jumpCount = 0;
     private bool _shouldBlockInput = false;
 
-    public void Start()
+    public async void Start()
     {
+        _shouldBlockInput = true;
         AudioController.PlayMusic("Stage2");
         _currentPlayerIndex = PlayerStartIndex;
         _allLineCells = GetComponentsInChildren<LineCell>();
@@ -35,6 +36,11 @@ public class LevelTwoController : MonoBehaviour
         _currentCoinIndex = _currentPlayerIndex + cellsGapNum[_jumpCount];
         _currentCoinCell = _allLineCells[_currentCoinIndex];
         _currentCoinCell.SetCoin(true);
+        await UniTask.Delay(TimeSpan.FromSeconds(1), ignoreTimeScale: false);
+        gameObject.transform.DOScale(new Vector3(0.4f, 0.4f, 1), 2f).OnComplete(() =>
+        {
+            _shouldBlockInput = false;
+        });
     }
 
     void Update()
@@ -44,7 +50,7 @@ public class LevelTwoController : MonoBehaviour
         {
             PlayerCursor.DoShake(1f);
             _shouldBlockInput = true;
-            _linesTransform.DOMoveX(_linesTransform.position.x + 1,1f).OnComplete(() =>
+            _linesTransform.DOMoveX(_linesTransform.position.x + 1 * 0.4f,1f).OnComplete(() =>
             {
                 _shouldBlockInput = false;
             });
@@ -58,7 +64,7 @@ public class LevelTwoController : MonoBehaviour
             PlayerCursor.DoShake(0.3f);
             _shouldBlockInput = true;
             // _linesTransform.Translate(Vector3.left * 1);
-            _linesTransform.DOMoveX(_linesTransform.position.x - 1,0.3f).OnComplete(() =>
+            _linesTransform.DOMoveX(_linesTransform.position.x - 1 * 0.4f,0.3f).OnComplete(() =>
             {
                 
                 _shouldBlockInput = false;
@@ -88,6 +94,7 @@ public class LevelTwoController : MonoBehaviour
             _jumpCount += 1;
             Debug.Log("jumpCount" + _jumpCount + " gapCount:" + cellsGapNum.Count);
             if(_jumpCount >=  cellsGapNum.Count) return;
+            AudioController.Play("Stage2_CoinLeap_sfx");
             _currentCoinCell.SetCoin(false);
             _currentCoinIndex = _currentPlayerIndex + cellsGapNum[_jumpCount];
             _currentCoinCell = _allLineCells[_currentCoinIndex];

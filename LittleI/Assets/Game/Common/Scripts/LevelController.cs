@@ -6,6 +6,7 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     public string StartLevelName = "Level1";
+    public FadeCamera FadeCamera;
     private GameObject _currentLevelGO;
     private void Start()
     {
@@ -17,4 +18,10 @@ public class LevelController : MonoBehaviour
         GameObject levelGO = Resources.Load<GameObject>($"Prefabs/{levelName}");
         GameObject instance = Instantiate(levelGO);
     }
+
+    // public static void FadeIn()
+    // {
+    //     FadeCamera.Reset();
+    // }
+
 }
