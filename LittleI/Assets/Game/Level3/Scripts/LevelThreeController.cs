@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ClockStone;
 using UnityEngine;
 
 public class LevelThreeController : MonoBehaviour
@@ -11,7 +12,10 @@ public class LevelThreeController : MonoBehaviour
 
     private void Start()
     {
-        AudioController.PlayMusic("Stage3");
+        AudioObject AO =AudioController.PlayMusic("Stage3");
+        AO.FadeIn(2f);
+        AO.transform.SetParent(gameObject.transform);
+        AO.GetComponent<AudioSource>().loop = true;
     }
 
     public void ResetLevel()

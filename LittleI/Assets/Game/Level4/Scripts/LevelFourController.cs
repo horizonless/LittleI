@@ -23,6 +23,10 @@ public class LevelFourController : MonoBehaviour
         _initTransform = PlayerGO.transform;
         _audioA = AudioController.PlayMusic("Stage4");
         _audioB = AudioController.Play("Stage4_Guitar");
+        _audioA.transform.SetParent(gameObject.transform);
+        _audioB.transform.SetParent(gameObject.transform);
+        _audioA.GetComponent<AudioSource>().loop = true;
+        _audioB.GetComponent<AudioSource>().loop = true;
         _audioB.volume = 0;
         // await UniTask.Delay(TimeSpan.FromSeconds(5), ignoreTimeScale: false);
         // Win();
@@ -57,7 +61,7 @@ public class LevelFourController : MonoBehaviour
 
     private void Update()
     {
-        return;
+        // return;
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
 

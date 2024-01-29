@@ -21,4 +21,10 @@ public class LevelOneController : MonoBehaviour
             }
         }
     }
+
+    public void Win()
+    {
+        LevelController.StartLevel("Level2");
+        Destroy(gameObject);
+    }
 }

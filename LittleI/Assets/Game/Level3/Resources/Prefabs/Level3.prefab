@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 371140003694048671}
   - component: {fileID: 1443001566623389233}
+  - component: {fileID: 6363031671686139241}
   m_Layer: 0
   m_Name: Level3
   m_TagString: Untagged
@@ -24,7 +25,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371140003694048664}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,6 +32,7 @@ Transform:
   m_Children:
   - {fileID: 8148524058580742482}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1443001566623389233
 MonoBehaviour:
@@ -46,13 +47,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelHoldler: {fileID: 1463429402456623346}
-  maxWinCount: 1
+  maxWinCount: 3
+--- !u!114 &6363031671686139241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371140003694048664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468562302e6099c4cbfe3fd489de5e63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 1
+  blackScreenDuration: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &7696310266040459776
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
     m_TransformParent: {fileID: 371140003694048671}
     m_Modifications:
     - target: {fileID: 2007363107602912082, guid: 3c9c91cc8df7c8c4e843855de93b689b, type: 3}
@@ -108,9 +123,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1443001566623389233}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c9c91cc8df7c8c4e843855de93b689b, type: 3}
 --- !u!114 &1463429402456623346 stripped
 MonoBehaviour:

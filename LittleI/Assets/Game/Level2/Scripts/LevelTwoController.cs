@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ClockStone;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -29,7 +30,10 @@ public class LevelTwoController : MonoBehaviour
     public async void Start()
     {
         _shouldBlockInput = true;
-        AudioController.PlayMusic("Stage2");
+        AudioObject AO = AudioController.PlayMusic("Stage2");
+        AO.FadeIn(3f);
+        AO.transform.SetParent(gameObject.transform);
+        AO.GetComponent<AudioSource>().loop = true;
         _currentPlayerIndex = PlayerStartIndex;
         _allLineCells = GetComponentsInChildren<LineCell>();
         Debug.Log("Count:" + _allLineCells.Length);
