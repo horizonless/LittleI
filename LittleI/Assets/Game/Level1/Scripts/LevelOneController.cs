@@ -17,7 +17,7 @@ public class LevelOneController : MonoBehaviour
             foreach (var levelOneConfigEntity in _levelOneConfig.LevelOneConfigEntities)
             {
                 discController.ChangeColor(levelOneConfigEntity.value);
-                await UniTask.Delay(TimeSpan.FromSeconds(1), ignoreTimeScale: false);
+                await UniTask.Delay(TimeSpan.FromSeconds(0.15f), ignoreTimeScale: false);
             }
         }
     }
