@@ -5,22 +5,23 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    public string StartLevelName = "Level1";
+    public FadeCamera FadeCamera;
     private GameObject _currentLevelGO;
     private void Start()
     {
-        StartLevel("Level2");
+        StartLevel(StartLevelName);
     }
 
-    public void StartLevel(string levelName)
+    public static void StartLevel(string levelName)
     {
         GameObject levelGO = Resources.Load<GameObject>($"Prefabs/{levelName}");
         GameObject instance = Instantiate(levelGO);
-        LevelTwoController levelTwoController = instance.GetComponent<LevelTwoController>();
-        levelTwoController.Init(Win);
     }
 
-    public void Win()
-    {
-        Debug.Log("win");
-    }
+    // public static void FadeIn()
+    // {
+    //     FadeCamera.Reset();
+    // }
+
 }

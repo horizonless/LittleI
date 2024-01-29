@@ -11,6 +11,10 @@ public class PlayerCursor : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.DOFade(0, 0.3f).SetLoops(-1, LoopType.Yoyo);
     }
-    
-    
+
+    public void DoShake(float duration)
+    {
+        transform.DORewind ();
+        transform.DOPunchScale (new Vector3 (1, 1, 1), duration);
+    }
 }

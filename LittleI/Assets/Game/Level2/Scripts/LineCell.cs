@@ -18,15 +18,15 @@ public class LineCell : MonoBehaviour
         if(string.IsNullOrWhiteSpace(gameObject.name)) return;
         while (true)
         {
-            SetColor(UnityEngine.Random.Range(0,2));
-            await UniTask.Delay(TimeSpan.FromSeconds(5f), ignoreTimeScale: false);
+            SetColor(UnityEngine.Random.Range(0,10));
+            await UniTask.Delay(TimeSpan.FromSeconds(3f), ignoreTimeScale: false);
         }
     }
 
     public void SetColor(int val)
     {
         if (_isDestroy) return;
-        if (val == 1)
+        if (val > 7)
         {
             GetComponent<SpriteRenderer>().color = Color.red;
             IsDanger = true;
