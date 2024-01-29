@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")] public float moveSpeed;
     public Transform orientation;
     public  float GroundDrag = 5f;
+    public LevelFourController LevelFourController;
+            
     private float horizontalInput;
     private float verticalInput;
     private Vector3 moveDirection;
@@ -51,6 +53,15 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "Trigger")
+        {
+            LevelFourController.EnableBlood();
         }
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
@@ -8,11 +10,12 @@ public class PlayerCam : MonoBehaviour
     public float sensX;
     public float sensY;
     public Transform orientation;
+    public Transform firstLookTrans;
 
     private float xRotaion;
     private float yRotation;
 
-    private void Start()
+    private async void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
