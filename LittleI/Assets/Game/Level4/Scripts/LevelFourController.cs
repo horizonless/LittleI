@@ -12,13 +12,14 @@ public class LevelFourController : MonoBehaviour
     public GameObject BloodGO;
     public GameObject PackManGo;
     public GameObject WinGo;
+    public GameObject HolderGO;
     private Transform _initTransform;
 
     private async void Start()
     {
         _initTransform = PlayerGO.transform;
-        // await UniTask.Delay(TimeSpan.FromSeconds(5), ignoreTimeScale: false);
-        // Win();
+        await UniTask.Delay(TimeSpan.FromSeconds(5), ignoreTimeScale: false);
+        Win();
     }
 
     public void EnableBlood()
@@ -41,7 +42,7 @@ public class LevelFourController : MonoBehaviour
             {
                 PackManGo.transform.DOMove(WinGo.transform.position, 1f).OnComplete(() =>
                 {
-                    
+                    Destroy(HolderGO.gameObject);
                 });
             }); 
     }

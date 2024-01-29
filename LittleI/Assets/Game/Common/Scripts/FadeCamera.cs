@@ -15,15 +15,14 @@ public class FadeCamera : MonoBehaviour
     private Texture2D _texture;
  
     private float _passedBlackScreenTime;
- 
-    private void Start()
+    public void Reset()
     {
         _texture = new Texture2D(1, 1);
         _texture.SetPixel(0, 0, new Color(fadeColor.r, fadeColor.g, fadeColor.b, _alpha));
         _texture.Apply();
     }
- 
- 
+
+
     public void OnGUI()
     {
         // If the texture is no more visible, we are done.

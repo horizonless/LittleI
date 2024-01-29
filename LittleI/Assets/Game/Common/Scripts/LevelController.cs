@@ -19,9 +19,9 @@ public class LevelController : MonoBehaviour
         GameObject instance = Instantiate(levelGO);
     }
 
-    public void FadeCameraFadeIn()
-    {
-        // FadeCamera.RedoFade();
-    }
+    // public static void FadeIn()
+    // {
+    //     FadeCamera.Reset();
+    // }
 
 }
