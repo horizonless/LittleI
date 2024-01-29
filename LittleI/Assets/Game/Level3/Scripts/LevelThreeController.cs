@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,11 @@ public class LevelThreeController : MonoBehaviour
     public LevelHoldler LevelHoldler;
     public int maxWinCount = 1;
     private int _winCount = 0;
+
+    private void Start()
+    {
+        AudioController.PlayMusic("Stage3");
+    }
 
     public void ResetLevel()
     {

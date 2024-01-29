@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ClockStone;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Unity.VisualScripting;
@@ -14,16 +15,23 @@ public class LevelFourController : MonoBehaviour
     public GameObject WinGo;
     public GameObject HolderGO;
     private Transform _initTransform;
+    private AudioObject _audioA;
+    private AudioObject _audioB;
 
     private async void Start()
     {
         _initTransform = PlayerGO.transform;
-        await UniTask.Delay(TimeSpan.FromSeconds(5), ignoreTimeScale: false);
-        Win();
+        _audioA = AudioController.PlayMusic("Stage4");
+        _audioB = AudioController.Play("Stage4_Guitar");
+        _audioB.volume = 0;
+        // await UniTask.Delay(TimeSpan.FromSeconds(5), ignoreTimeScale: false);
+        // Win();
     }
 
     public void EnableBlood()
     {
+        _audioB.volume = 1;
+        _audioB.FadeIn(2f);
         BloodGO.SetActive(true);
         BloodGO.GetComponent<AIController>().Player = PlayerGO.transform;
     }
