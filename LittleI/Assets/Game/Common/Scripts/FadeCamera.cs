@@ -15,7 +15,7 @@ public class FadeCamera : MonoBehaviour
     private Texture2D _texture;
  
     private float _passedBlackScreenTime;
-    public void Reset()
+    private void Start()
     {
         _texture = new Texture2D(1, 1);
         _texture.SetPixel(0, 0, new Color(fadeColor.r, fadeColor.g, fadeColor.b, _alpha));

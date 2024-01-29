@@ -245,7 +245,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ba0f278092f814da4ee52131bfd169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartLevelName: Level1
+  StartLevelName: Level3
   FadeCamera: {fileID: 0}
 --- !u!4 &1724113988
 Transform:

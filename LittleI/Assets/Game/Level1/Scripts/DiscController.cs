@@ -20,6 +20,7 @@ public class RoundPattern
 
 public class DiscController : MonoBehaviour
 {
+    public LevelOneController LevelOneController;
     public Color rightColor = Color.red; // 可以在Unity编辑器中修改
     public Color wrongColor = Color.blue; // 可以在Unity编辑器中修改
     [Range(0.1f, 1f)]
@@ -78,8 +79,7 @@ public class DiscController : MonoBehaviour
     {
         if (_currentSize >= winRadius) 
         {
-            LevelController.StartLevel("Level2");
-            Destroy(gameObject);
+            LevelOneController.Win();
         }
     }
 }
